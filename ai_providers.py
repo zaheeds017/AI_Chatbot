@@ -106,6 +106,11 @@ def _check_response(resp):
 
 
 # ---- Gemini OAuth 2.0 ------------------------------------------------------
+# Fixed local port for the OAuth callback. Google matches the redirect URI
+# exactly, so this must be registered in your OAuth client's "Authorized
+# redirect URIs" as:  http://localhost:8080/
+GEMINI_OAUTH_PORT = 8080
+
 GEMINI_OAUTH_SCOPES = [
     "https://www.googleapis.com/auth/cloud-platform",
     "https://www.googleapis.com/auth/generative-language",
@@ -121,7 +126,8 @@ def _oauth_client_config(client_id, client_secret):
             "client_secret": client_secret.strip(),
             "auth_uri": "https://accounts.google.com/o/oauth2/v2/auth",
             "token_uri": "https://oauth2.googleapis.com/token",
-            "redirect_uris": ["http://localhost"],
+            "redirect_uris": ["http://localhost:%d" % GEMINI_OAUTH_PORT,
+                              "http://localhost"],
         }
     }
 
@@ -167,7 +173,8 @@ def _gemini_oauth_token(client_id, client_secret, token_path=None):
 
     flow = InstalledAppFlow.from_client_config(
         _oauth_client_config(client_id, client_secret), GEMINI_OAUTH_SCOPES)
-    creds = flow.run_local_server(port=0, access_type="offline",
+    creds = flow.run_local_server(port=GEMINI_OAUTH_PORT,
+                                  access_type="offline",
                                   prompt="consent")
     _save_oauth_token(creds, token_path)
     return creds.token

@@ -87,9 +87,12 @@ future-proof: Google is retiring standard API keys.
    choose **Desktop app**, and note the **Client ID** and **Client secret**.
    (Enable the *Generative Language API* first, and add yourself as a test user
    while the app is in "Testing" status.)
-3. Pick **✨ Gemini (OAuth 2.0)** in the sidebar, paste your Client ID + Secret,
+3. If your client type is **Web application** (or Google still reports
+   `redirect_uri_mismatch`), add this exact URI to the client's **Authorized
+   redirect URIs**: `http://localhost:8080/` (with the trailing slash).
+4. Pick **✨ Gemini (OAuth 2.0)** in the sidebar, paste your Client ID + Secret,
    and send your first message — a browser tab opens to sign in with Google.
-4. The token is cached in `gemini_oauth_token.json` (auto-refreshed). Keep that
+5. The token is cached in `gemini_oauth_token.json` (auto-refreshed). Keep that
    file private — it can act like a login session.
 
 > Works when the app runs locally (`streamlit run app.py`). It needs a browser on
