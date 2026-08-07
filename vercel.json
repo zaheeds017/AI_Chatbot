@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{streamlit_app.py,chat_history.json,gemini_oauth_token.json,.streamlit/**,__pycache__/**,**/*.pyc,*.pyc}"
+    }
+  }
+}

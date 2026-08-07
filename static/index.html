@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Omni AI</title>
+<style>
+:root {
+  --bg: #0f1419; --panel: #1a222b; --bubble: #1f2c3a;
+  --accent: #10a37f; --border: #2c3a45; --text: #e6edf3; --muted: #8b9aa8;
+  --codebg: #0d1117;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex; overflow: hidden;
+}
+a { color: var(--accent); }
+
+/* ---- sidebar ---- */
+#sidebar {
+  width: 270px; min-width: 270px; background: var(--panel);
+  border-right: 1px solid var(--border); padding: 18px 16px;
+  overflow-y: auto; display: flex; flex-direction: column; gap: 14px;
+}
+#sidebar h1 { font-size: 20px; margin: 0; }
+#sidebar .sub { color: var(--muted); font-size: 12px; margin: 2px 0 0; }
+.side-sec { margin-top: 10px; }
+.side-sec label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 5px; }
+select, input, button { font-family: inherit; }
+select, input[type="text"], input[type="password"] {
+  width: 100%; background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 8px 10px; font-size: 13px; outline: none;
+}
+select:focus, input:focus { border-color: var(--accent); }
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+#newchat {
+  background: var(--accent); color: #06130e; border: none;
+  border-radius: 8px; padding: 10px; font-weight: 600; cursor: pointer;
+}
+#newchat:hover { filter: brightness(1.1); }
+.side-note { color: var(--muted); font-size: 11px; line-height: 1.5; }
+#openai-url { display: none; }
+
+/* ---- main ---- */
+#main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+#topbar {
+  padding: 14px 24px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+#topbar h2 { margin: 0; font-size: 17px; }
+#mode { color: var(--muted); font-size: 13px; }
+
+#messages {
+  flex: 1; overflow-y: auto; padding: 24px;
+  display: flex; flex-direction: column; gap: 18px; max-width: 920px;
+  width: 100%; margin: 0 auto;
+}
+.row { display: flex; gap: 12px; max-width: 92%; }
+.row.user { align-self: flex-end; flex-direction: row-reverse; }
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 17px;
+  background: var(--bubble); border: 1px solid var(--border);
+}
+.bubble {
+  background: var(--bubble); border: 1px solid var(--border);
+  border-radius: 14px 14px 14px 4px; padding: 10px 14px;
+  line-height: 1.55; font-size: 14px; overflow-wrap: break-word; min-width: 0;
+}
+.row.user .bubble { background: #123c31; border-color: #1d5c4a; border-radius: 14px 14px 4px 14px; }
+.bubble p { margin: 0 0 8px; } .bubble p:last-child { margin-bottom: 0; }
+.bubble ul, .bubble ol { margin: 4px 0 8px; padding-left: 22px; }
+.bubble li { margin: 2px 0; }
+.bubble h3, .bubble h4 { margin: 10px 0 6px; }
+.bubble hr { border: 0; border-top: 1px solid var(--border); margin: 10px 0; }
+.bubble code {
+  background: var(--codebg); border: 1px solid var(--border);
+  padding: 1px 6px; border-radius: 5px; font-size: 13px;
+  font-family: "Cascadia Code", Consolas, Menlo, monospace;
+}
+.bubble pre {
+  position: relative; background: var(--codebg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px; margin: 8px 0; overflow-x: auto;
+}
+.bubble pre code { border: 0; padding: 0; background: transparent; display: block; }
+.copy {
+  position: absolute; top: 8px; right: 10px; z-index: 2;
+  background: rgba(255,255,255,0.07); color: #c8d2db;
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 6px;
+  font-size: 11px; padding: 2px 9px; cursor: pointer; font-family: inherit;
+}
+.copy:hover { background: rgba(255,255,255,0.16); color: #fff; }
+.bubble table { border-collapse: collapse; margin: 8px 0; font-size: 13px; }
+.bubble th, .bubble td { border: 1px solid var(--border); padding: 5px 10px; text-align: left; }
+.bubble th { background: var(--bubble); }
+.bubble blockquote { border-left: 3px solid var(--accent); margin: 6px 0; padding: 2px 12px; color: var(--muted); }
+.error-bubble { border-color: #7f1d1d; background: #3a1a1a; }
+.caret::after { content: "▍"; color: var(--accent); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.typing { display: inline-flex; gap: 4px; padding: 4px 2px; }
+.typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: bounce 1.2s infinite; }
+.typing span:nth-child(2) { animation-delay: .15s; } .typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes bounce { 0%,60%,100% { transform: translateY(0);} 30% { transform: translateY(-5px);} }
+
+/* ---- examples ---- */
+#examples { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  background: var(--bubble); border: 1px solid var(--border); color: var(--text);
+  border-radius: 16px; padding: 6px 12px; font-size: 12px; cursor: pointer;
+}
+.chip:hover { border-color: var(--accent); }
+
+/* ---- input ---- */
+#inputbar {
+  padding: 14px 24px 20px; border-top: 1px solid var(--border);
+  display: flex; gap: 10px; max-width: 920px; width: 100%; margin: 0 auto;
+}
+#chatinput {
+  flex: 1; background: var(--panel); border: 1px solid var(--border); color: var(--text);
+  border-radius: 24px; padding: 12px 18px; font-size: 14px; resize: none;
+  outline: none; min-height: 46px; max-height: 160px; font-family: inherit;
+}
+#chatinput:focus { border-color: var(--accent); }
+#send {
+  background: var(--accent); color: #06130e; border: 0; border-radius: 50%;
+  width: 46px; height: 46px; font-size: 18px; cursor: pointer; flex-shrink: 0;
+}
+#send:disabled { opacity: .45; cursor: default; }
+
+@media (max-width: 760px) {
+  body { flex-direction: column; }
+  #sidebar { width: 100%; min-width: 0; max-height: 38vh; border-right: 0; border-bottom: 1px solid var(--border); }
+  .row { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div>
+    <h1>🤖 Omni AI</h1>
+    <p class="sub">Study · Coding · Daily life</p>
+  </div>
+
+  <div class="side-sec">
+    <label>AI engine</label>
+    <select id="provider"></select>
+  </div>
+
+  <div class="side-sec" id="model-sec">
+    <label>Model</label>
+    <select id="model"></select>
+  </div>
+
+  <div class="side-sec" id="key-sec">
+    <label id="key-label">API key</label>
+    <input type="password" id="apikey" placeholder="Paste key to go online…" autocomplete="off" />
+    <p class="side-note">No key? The app falls back to free offline mode.</p>
+  </div>
+
+  <div class="side-sec" id="openai-url">
+    <label>Custom OpenAI-compatible URL (optional)</label>
+    <input type="text" id="baseurl" placeholder="https://api.openai.com/v1" />
+  </div>
+
+  <div class="side-sec">
+    <label>Max reply length · <span id="tokval">1024</span></label>
+    <input type="range" id="maxtokens" min="256" max="4096" step="256" value="1024" />
+  </div>
+
+  <button id="newchat">➕ &nbsp;New chat</button>
+
+  <p class="side-note">
+    <strong>Omni AI</strong> answers across mathematics, science, biology, social studies,
+    English, geometry, medical, arts, commerce, technology and daily life.<br /><br />
+    Keys are sent only to the AI provider (or read from server env vars) and never stored on disk.
+  </p>
+</aside>
+
+<main id="main">
+  <div id="topbar">
+    <h2>🤖 Omni AI</h2>
+    <span id="mode">offline — calculators, knowledge base &amp; code templates (free)</span>
+  </div>
+
+  <div id="messages"></div>
+
+  <div id="inputbar">
+    <textarea id="chatinput" rows="1" placeholder="Message Omni AI… (e.g. 'solve 2^10', 'explain this code')"></textarea>
+    <button id="send" title="Send">➤</button>
+  </div>
+</main>
+
+<script>
+"use strict";
+
+const PROVIDERS = {
+  offline: { label: "Offline (free, no key)", models: [], default: "" },
+  gemini:  { label: "✨ Gemini (Google)", models: ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-2.0-flash"], default: "gemini-2.5-flash" },
+  openai:  { label: "🟢 OpenAI / ChatGPT", models: ["gpt-4o", "gpt-4o-mini", "gpt-4.1", "gpt-4.1-mini", "o3-mini"], default: "gpt-4o-mini" },
+  claude:  { label: "🟠 Claude (Anthropic)", models: ["claude-opus-4", "claude-sonnet-4", "claude-haiku-4"], default: "claude-sonnet-4" },
+};
+
+const GREETING =
+  "Hi! I'm **Omni AI** — your study & coding assistant.\n\n" +
+  "Ask me about **math** (_what is 15% of 200?_), **science** (_force for mass 10 kg and acceleration 5_), " +
+  "**geometry** (_area of a circle with radius 7_), **commerce** (_simple interest on 1000 at 5% for 2 years_), " +
+  "**medical** (_BMI for 70 kg and 175 cm_), **daily life** (_convert 10 km to miles_), or **coding** " +
+  "(_write a python program to check prime_).\n\n" +
+  "Add an API key in the sidebar to switch to a real AI (Gemini / ChatGPT / Claude) with streaming replies.";
+
+const EXAMPLES = [
+  "Write a python program to check prime",
+  "Force for mass 10 kg and acceleration 5",
+  "What is photosynthesis?",
+  "Convert 10 km to miles",
+];
+
+const $ = (id) => document.getElementById(id);
+const msgEl = $("messages");
+
+// ---- settings ---------------------------------------------------------------
+let settings = { provider: "offline", model: "gemini-2.5-flash", apiKey: "", baseUrl: "", maxTokens: 1024 };
+try { settings = Object.assign(settings, JSON.parse(localStorage.getItem("omni_settings") || "{}")); } catch (e) {}
+
+function saveSettings() {
+  localStorage.setItem("omni_settings", JSON.stringify(settings));
+}
+function renderSettings() {
+  $("provider").innerHTML = Object.entries(PROVIDERS)
+    .map(([k, v]) => `<option value="${k}">${v.label}</option>`).join("");
+  $("provider").value = settings.provider;
+  updateModelList();
+  $("apikey").value = settings.apiKey;
+  $("baseurl").value = settings.baseUrl;
+  $("maxtokens").value = settings.maxTokens;
+  $("tokval").textContent = settings.maxTokens;
+  updateModeLine();
+}
+function updateModelList() {
+  const cfg = PROVIDERS[settings.provider];
+  $("model-sec").style.display = settings.provider === "offline" ? "none" : "block";
+  $("key-sec").style.display = settings.provider === "offline" ? "none" : "block";
+  $("openai-url").style.display = settings.provider === "openai" ? "block" : "none";
+  $("model").innerHTML = cfg.models.map((m) => `<option>${m}</option>`).join("");
+  if (!cfg.models.includes(settings.model)) settings.model = cfg.default;
+  $("model").value = settings.model;
+}
+function updateModeLine() {
+  if (settings.provider === "offline")
+    $("mode").textContent = "offline — calculators, knowledge base & code templates (free)";
+  else
+    $("mode").textContent = `${settings.provider} · ${settings.model}${settings.apiKey ? " · online" : " · offline fallback (add key)"}`;
+}
+
+$("provider").addEventListener("change", (e) => { settings.provider = e.target.value; updateModelList(); updateModeLine(); saveSettings(); });
+$("model").addEventListener("change", (e) => { settings.model = e.target.value; updateModeLine(); saveSettings(); });
+$("apikey").addEventListener("input", (e) => { settings.apiKey = e.target.value; updateModeLine(); saveSettings(); });
+$("baseurl").addEventListener("input", (e) => { settings.baseUrl = e.target.value; saveSettings(); });
+$("maxtokens").addEventListener("input", (e) => { settings.maxTokens = +e.target.value; $("tokval").textContent = settings.maxTokens; saveSettings(); });
+$("newchat").addEventListener("click", () => { messages = []; persist(); render(); });
+
+// ---- messages ---------------------------------------------------------------
+let messages = [];
+try { messages = JSON.parse(localStorage.getItem("omni_messages") || "[]"); } catch (e) { messages = []; }
+function persist() { try { localStorage.setItem("omni_messages", JSON.stringify(messages)); } catch (e) {} }
+
+function render() {
+  msgEl.innerHTML = "";
+  if (messages.length === 0) {
+    messages = [{ role: "assistant", content: GREETING }];
+    persist();
+  }
+  for (const m of messages) addBubble(m.role, m.content, false);
+  renderExamples();
+  msgEl.scrollTop = msgEl.scrollHeight;
+}
+
+function bubbleRow(role) {
+  const row = document.createElement("div");
+  row.className = "row " + role;
+  const avatar = document.createElement("div");
+  avatar.className = "avatar";
+  avatar.textContent = role === "user" ? "🧑" : "🤖";
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  row.appendChild(avatar);
+  row.appendChild(bubble);
+  msgEl.appendChild(row);
+  return bubble;
+}
+
+function addBubble(role, content, animate) {
+  const bubble = bubbleRow(role);
+  if (role === "user") { bubble.innerHTML = esc(content).replace(/\n/g, "<br>"); }
+  else if (animate) {
+    bubble.classList.add("caret");
+    reveal(bubble, content);
+  } else {
+    bubble.innerHTML = renderMarkdown(content);
+  }
+  return bubble;
+}
+
+function renderExamples() {
+  const old = msgEl.querySelector(".examples");
+  if (old) old.remove();
+  if (messages.length > 1) return;
+  const div = document.createElement("div");
+  div.className = "examples";
+  div.id = "examples";
+  for (const ex of EXAMPLES) {
+    const b = document.createElement("button");
+    b.className = "chip";
+    b.textContent = ex;
+    b.addEventListener("click", () => ask(ex));
+    div.appendChild(b);
+  }
+  msgEl.appendChild(div);
+}
+
+// ---- markdown-lite renderer -------------------------------------------------
+function esc(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+function inline(s) {
+  s = esc(s);
+  s = s.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
+  s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  s = s.replace(/(^|[^*\w])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+  return s;
+}
+function isTableSep(line) { return /^\s*\|?\s*:?-+:?\s*(\|[\s:|-]+)*\|?\s*$/.test(line) && line.includes("-"); }
+function renderMarkdown(md) {
+  md = String(md || "").replace(/\r/g, "");
+  const lines = md.split("\n");
+  let html = "", i = 0;
+  const escL = (s) => esc(s.trim().replace(/^\|/, "").replace(/\|$/, ""));
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    if (/^\s*```/.test(line)) {
+      const lang = (line.match(/```(\w*)/) || [])[1];
+      const buf = [];
+      i++;
+      while (i < lines.length && !/^\s*```/.test(lines[i])) { buf.push(lines[i]); i++; }
+      i++;
+      html += `<pre><code>${esc(buf.join("\n"))}</code><button class="copy" title="Copy code">Copy</button></pre>`;
+      continue;
+    }
+
+    if (!line.trim()) { i++; continue; }
+
+    if (/^\s{0,3}#{1,4}\s+/.test(line)) {
+      const level = line.match(/^(\s*#{1,4})\s+(.*)$/);
+      html += `<h${Math.min(level[1].trim().length + 1, 4)}>${inline(level[2])}</h${Math.min(level[1].trim().length + 1, 4)}>`;
+      i++;
+      continue;
+    }
+    if (/^\s*(-{3,}|\*{3,})\s*$/.test(line)) { html += "<hr/>"; i++; continue; }
+    if (/^\s*>\s?/.test(line)) {
+      const buf = [];
+      while (i < lines.length && /^\s*>\s?/.test(lines[i])) { buf.push(lines[i].replace(/^\s*>\s?/, "")); i++; }
+      html += `<blockquote>${inline(buf.join(" "))}</blockquote>`;
+      continue;
+    }
+    if (/^\s*[-*]\s+/.test(line) || /^\s*\d+\.\s+/.test(line)) {
+      const ordered = /^\s*\d+\.\s+/.test(line);
+      const items = [];
+      while (i < lines.length && (/^\s*[-*]\s+/.test(lines[i]) || /^\s*\d+\.\s+/.test(lines[i]))) {
+        items.push(inline(lines[i].replace(/^\s*[-*]\s+/, "").replace(/^\s*\d+\.\s+/, "")));
+        i++;
+      }
+      const tag = ordered ? "ol" : "ul";
+      html += `<${tag}>${items.map((it) => `<li>${it}</li>`).join("")}</${tag}>`;
+      continue;
+    }
+    if (line.includes("|") && lines[i + 1] && isTableSep(lines[i + 1])) {
+      const header = line.split("|").map(escL);
+      i += 2;
+      const rows = [];
+      while (i < lines.length && lines[i].includes("|") && lines[i].trim() !== "") {
+        rows.push(`<tr>${lines[i].split("|").map(escL).map((c) => `<td>${inline(c)}</td>`).join("")}</tr>`);
+        i++;
+      }
+      html += `<table><thead><tr>${header.map((h) => `<th>${inline(h)}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table>`;
+      continue;
+    }
+    const buf = [line];
+    i++;
+    while (i < lines.length && lines[i].trim() !== "" && !/^\s*```/.test(lines[i]) &&
+           !/^\s{0,3}#{1,4}\s+/.test(lines[i]) && !/^\s*[-*]\s+/.test(lines[i]) &&
+           !/^\s*\d+\.\s+/.test(lines[i]) && !/^\s*>\s?/.test(lines[i]) &&
+           !(lines[i].includes("|") && lines[i + 1] && isTableSep(lines[i + 1]))) {
+      buf.push(lines[i]);
+      i++;
+    }
+    html += `<p>${inline(buf.join(" "))}</p>`;
+  }
+  return html;
+}
+
+// copy buttons (event delegation)
+msgEl.addEventListener("click", (e) => {
+  const btn = e.target.closest(".copy");
+  if (!btn) return;
+  const code = (btn.parentElement.querySelector("code") || btn.parentElement).innerText;
+  const done = () => { const t = btn.textContent; btn.textContent = "Copied"; setTimeout(() => { btn.textContent = t; }, 1200); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(code).then(done, done);
+  else {
+    const ta = document.createElement("textarea");
+    ta.value = code; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); } catch (err) {}
+    document.body.removeChild(ta); done();
+  }
+});
+
+// ---- typewriter reveal ------------------------------------------------------
+function reveal(bubble, fullText) {
+  let i = 0;
+  const step = 4;
+  (function tick() {
+    i = Math.min(i + step, fullText.length);
+    bubble.innerHTML = renderMarkdown(fullText.slice(0, i));
+    bubble.scrollTop = bubble.scrollHeight;
+    msgEl.scrollTop = msgEl.scrollHeight;
+    if (i < fullText.length) setTimeout(tick, 10);
+    else bubble.classList.remove("caret");
+  })();
+}
+
+// ---- streaming (SSE via fetch) ----------------------------------------------
+let busy = false;
+function setBusy(b) {
+  busy = b;
+  $("send").disabled = b;
+  $("chatinput").disabled = b;
+  if (!b) $("chatinput").focus();
+}
+
+function typingDots(bubble) {
+  bubble.innerHTML = '<span class="typing"><span></span><span></span><span></span></span>';
+}
+
+async function ask(text) {
+  text = (text || "").trim();
+  if (!text || busy) return;
+  messages.push({ role: "user", content: text });
+  persist();
+  addBubble("user", text, false);
+  msgEl.scrollTop = msgEl.scrollHeight;
+  renderExamples();
+
+  setBusy(true);
+  const bubble = bubbleRow("assistant");
+  typingDots(bubble);
+  msgEl.scrollTop = msgEl.scrollHeight;
+
+  const payload = {
+    messages: messages.map((m) => ({ role: m.role, content: m.content })),
+    provider: settings.provider,
+    model: settings.provider === "offline" ? null : settings.model,
+    api_key: settings.apiKey,
+    openai_base_url: settings.baseUrl,
+    max_tokens: settings.maxTokens,
+  };
+
+  let fullText = "", sawDelta = false;
+  try {
+    const resp = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!resp.ok || !resp.body) throw new Error("Server error " + resp.status);
+    const reader = resp.body.getReader();
+    const dec = new TextDecoder();
+    let buf = "";
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      let idx;
+      while ((idx = buf.indexOf("\n\n")) !== -1) {
+        const raw = buf.slice(0, idx);
+        buf = buf.slice(idx + 2);
+        if (!raw.startsWith("data:")) continue;
+        let ev;
+        try { ev = JSON.parse(raw.slice(5).trim()); } catch (e) { continue; }
+        if (ev.type === "delta") {
+          sawDelta = true;
+          fullText += ev.text;
+          bubble.innerHTML = renderMarkdown(fullText);
+          msgEl.scrollTop = msgEl.scrollHeight;
+        } else if (ev.type === "done") {
+          fullText = ev.text;
+        } else if (ev.type === "error") {
+          fullText = ev.message;
+          bubble.classList.add("error-bubble");
+        }
+      }
+    }
+  } catch (err) {
+    fullText = "⚠️ Something went wrong: " + err.message;
+    bubble.classList.add("error-bubble");
+  }
+
+  if (!fullText) fullText = "_The model returned no text._";
+  if (sawDelta || fullText.startsWith("⚠️")) {
+    bubble.innerHTML = renderMarkdown(fullText);
+  } else {
+    bubble.classList.add("caret");
+    reveal(bubble, fullText);
+  }
+  messages.push({ role: "assistant", content: fullText });
+  persist();
+  setBusy(false);
+  msgEl.scrollTop = msgEl.scrollHeight;
+}
+
+// ---- input ------------------------------------------------------------------
+const input = $("chatinput");
+function autoGrow() { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 160) + "px"; }
+input.addEventListener("input", autoGrow);
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(input.value); input.value = ""; autoGrow(); }
+});
+$("send").addEventListener("click", () => { ask(input.value); input.value = ""; autoGrow(); });
+
+renderSettings();
+render();
+</script>
+</body>
+</html>

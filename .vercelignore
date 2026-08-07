@@ -1,0 +1,4 @@
+__pycache__/
+.streamlit/
+chat_history.json
+gemini_oauth_token.json
