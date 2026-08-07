@@ -1,0 +1,869 @@
+{
+  "domain": "Omni StudyMate - All-in-One AI Study & Daily-Life Assistant",
+  "title": "Omni StudyMate",
+  "categories": [
+    {
+      "id": "mathematics",
+      "label": "Mathematics",
+      "icon": "🔢",
+      "description": "Arithmetic, algebra, percentages, averages, probability and step-by-step problem solving.",
+      "faqs": [
+        {"q": "What is mathematics?", "a": "Mathematics is the study of numbers, quantity, structure, space and change. Its main branches are arithmetic, algebra, geometry, trigonometry, calculus and statistics."},
+        {"q": "What is algebra?", "a": "Algebra uses letters (variables like x and y) to represent unknown numbers. For example, in x + 3 = 7, subtract 3 from both sides to find x = 4. It lets us write general rules and solve many problems at once."},
+        {"q": "What is a fraction and how do I add them?", "a": "A fraction is part of a whole, written as numerator/denominator (e.g. 1/2). To add fractions with the same denominator, just add the numerators (1/5 + 2/5 = 3/5). With different denominators, first make them equal using the LCM (1/2 + 1/3 = 3/6 + 2/6 = 5/6)."},
+        {"q": "What is a percentage?", "a": "A percentage is a fraction out of 100. 25% means 25 out of 100. To find 25% of 200, multiply 200 by 0.25 = 50. You can ask me things like 'what is 15% of 200?' and I will compute it."},
+        {"q": "What is the order of operations (PEMDAS / BODMAS)?", "a": "It is the rule for the order to solve expressions: Brackets/Parentheses first, then Exponents/Orders (powers and roots), then Division and Multiplication (left to right), then Addition and Subtraction (left to right). Example: 2 + 3 * 4 = 2 + 12 = 14."},
+        {"q": "What is probability?", "a": "Probability measures how likely an event is, from 0 (impossible) to 1 (certain). It is P(event) = favourable outcomes / total outcomes. Example: chance of rolling a 3 on a die is 1/6."},
+        {"q": "What is the difference between mean, median and mode?", "a": "The mean is the average (sum of values divided by how many there are). The median is the middle value when data is sorted. The mode is the value that appears most often. I can compute the mean for you: ask 'average of 5, 7, 9'."},
+        {"q": "What is a prime number?", "a": "A prime number has exactly two factors: 1 and itself (2, 3, 5, 7, 11, 13...). 1 is not prime, and 2 is the only even prime. Ask me 'is 17 prime?' and I will check."},
+        {"q": "What is the quadratic formula?", "a": "For a quadratic equation ax² + bx + c = 0, the solutions are x = (-b ± sqrt(b² - 4ac)) / (2a). The part b² - 4ac is called the discriminant: positive means two real roots, zero means one, negative means complex roots."},
+        {"q": "What is an exponent?", "a": "An exponent says how many times to multiply a number by itself. 2³ (two cubed) = 2 × 2 × 2 = 8. Exponents follow rules like a^m × a^n = a^(m+n) and a^0 = 1. Ask me 'what is 2 to the power of 10?' and I will compute it."},
+        {"q": "What is the Pythagorean theorem?", "a": "In a right triangle, the square of the hypotenuse equals the sum of the squares of the other two sides: a² + b² = c². Ask me 'hypotenuse of 3 and 4' and I will compute c = 5."},
+        {"q": "What is pi (π)?", "a": "Pi (π) is the ratio of a circle's circumference to its diameter, always about 3.14159. It is an irrational number, so its decimal never ends or repeats. It is used in circle and sphere formulas: circumference 2πr, area πr²."},
+        {"q": "What is statistics?", "a": "Statistics is the branch of mathematics that collects, organizes, analyzes and interprets data. Tools include the mean, median, mode, range, and charts like bar graphs and pie charts."},
+        {"q": "What is simple interest?", "a": "Simple interest is interest earned on the principal only: SI = (P × R × T) / 100, where P is the principal, R is the annual rate and T is time in years. Ask me 'simple interest on 1000 at 5% for 2 years'."}
+      ]
+    },
+    {
+      "id": "science",
+      "label": "Science",
+      "icon": "🧪",
+      "description": "Physics & chemistry concepts and everyday calculations (force, energy, density, electricity, waves).",
+      "faqs": [
+        {"q": "What is the scientific method?", "a": "The scientific method is a step-by-step way to answer questions: 1) Ask a question, 2) do background research, 3) form a hypothesis, 4) test it with an experiment, 5) analyze the results, 6) draw a conclusion and share it."},
+        {"q": "What is matter and its states?", "a": "Matter is anything that has mass and takes up space. It exists in three main states: solid (fixed shape), liquid (fixed volume, takes the container's shape) and gas (fills any container). Heating or cooling changes states, e.g. ice, water, steam."},
+        {"q": "What is force?", "a": "Force is a push or pull that can change an object's motion. Force = mass × acceleration (F = ma), measured in newtons (N). Ask me 'force for mass 10 kg and acceleration 5' and I will calculate it."},
+        {"q": "What is gravity?", "a": "Gravity is the force that pulls objects with mass toward each other. On Earth it gives objects an acceleration of about 9.8 m/s², which is why things fall down. The Sun's gravity keeps the planets in orbit."},
+        {"q": "What is energy and its types?", "a": "Energy is the ability to do work. Types include kinetic (motion), potential (stored), thermal (heat), chemical, electrical, sound and light energy. The law of conservation says energy cannot be created or destroyed, only converted."},
+        {"q": "What is electricity?", "a": "Electricity is the flow of electric charge (electrons) through a conductor. It has voltage (V), current (I in amperes) and resistance (R in ohms), related by Ohm's law V = I × R. Ask me 'voltage for current 2 and resistance 10'."},
+        {"q": "What is light?", "a": "Light is electromagnetic radiation that travels as waves at about 300,000 km/s. It behaves as both a wave and particles (photons). Speed = frequency × wavelength. It can reflect, refract and diffract."},
+        {"q": "What is sound?", "a": "Sound is a vibration that travels through a medium (air, water, solids) as longitudinal waves. It cannot travel through a vacuum. Speed of sound in air is about 343 m/s. Pitch depends on frequency, loudness on amplitude."},
+        {"q": "What are Newton's three laws of motion?", "a": "1st law: an object stays at rest or in uniform motion unless a force acts on it (inertia). 2nd law: F = ma, force equals mass times acceleration. 3rd law: for every action there is an equal and opposite reaction."},
+        {"q": "What is the solar system?", "a": "The solar system is the Sun and everything orbiting it: eight planets (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune), dwarf planets, moons, asteroids and comets. The Sun contains about 99.86% of its mass."},
+        {"q": "What is density?", "a": "Density is how much mass is packed into a volume: density = mass / volume, usually kg/m³ or g/cm³. Ice floats on water because its density is lower. Ask me 'density of a mass 200 g and volume 100 ml'."},
+        {"q": "What is the speed of light?", "a": "Light travels at about 299,792,458 m/s (roughly 300,000 km/s) in a vacuum. At this speed, light from the Sun takes about 8 minutes and 20 seconds to reach Earth."},
+        {"q": "What is a chemical reaction?", "a": "A chemical reaction is a process where substances (reactants) change into new substances (products) by breaking and forming bonds. Examples include burning, rusting and cooking. Signs include gas, heat, light or color change."}
+      ]
+    },
+    {
+      "id": "biology",
+      "label": "Biology",
+      "icon": "🧬",
+      "description": "Cells, the human body, plants, genetics and living systems explained simply.",
+      "faqs": [
+        {"q": "What is a cell?", "a": "The cell is the basic unit of life. Animal cells have a nucleus, cell membrane, cytoplasm and mitochondria. Plant cells additionally have a cell wall, chloroplasts and a vacuole. Cells are discovered using microscopes."},
+        {"q": "What is photosynthesis?", "a": "Photosynthesis is how green plants make food using sunlight: carbon dioxide + water + light energy -> glucose + oxygen. It happens in chloroplasts and is the source of almost all the oxygen we breathe."},
+        {"q": "What is DNA?", "a": "DNA (deoxyribonucleic acid) is the molecule that carries genetic instructions. It has a double-helix shape made of bases A, T, G and C. Genes are segments of DNA that code for traits. Humans have about 20,000-25,000 genes."},
+        {"q": "What is respiration?", "a": "Respiration is the process of releasing energy from glucose. Aerobic respiration uses oxygen: glucose + oxygen -> carbon dioxide + water + energy. Muscles use oxygen for respiration, which is why we breathe faster during exercise."},
+        {"q": "How does the heart and circulatory system work?", "a": "The heart is a muscular pump with four chambers that sends blood through arteries, veins and capillaries. Oxygenated blood goes from the heart to the body; deoxygenated blood returns to the lungs for oxygen."},
+        {"q": "What is the difference between viruses and bacteria?", "a": "Bacteria are single-celled living organisms that can reproduce on their own and are treated with antibiotics. Viruses are much smaller, need a host cell to reproduce and are treated with antivirals or vaccines."},
+        {"q": "What is a food chain and ecosystem?", "a": "An ecosystem is all living things and their environment in an area. A food chain shows who eats whom: grass -> grasshopper -> frog -> snake -> eagle. Energy flows from producers (plants) to consumers to decomposers."},
+        {"q": "What is evolution?", "a": "Evolution is the change in species over generations through natural selection. Individuals with traits better suited to the environment survive and reproduce more, passing those traits on. Charles Darwin explained this with On the Origin of Species."},
+        {"q": "What is the nervous system?", "a": "The nervous system is the body's control and communication network. It includes the brain, spinal cord and nerves. Neurons carry electrical signals; the brain processes information and coordinates responses."},
+        {"q": "What is the digestive system?", "a": "Digestion breaks food into nutrients the body can absorb. The path is: mouth (chewing + saliva) -> stomach (acids) -> small intestine (absorption) -> large intestine (water reabsorption). Enzymes speed up the breakdown of food."},
+        {"q": "What is the immune system?", "a": "The immune system defends the body against germs. White blood cells like lymphocytes make antibodies that remember invaders, which is how vaccines give long-term protection."},
+        {"q": "What is reproduction?", "a": "Reproduction creates new individuals. Asexual reproduction needs one parent (e.g. budding in yeast, binary fission in bacteria). Sexual reproduction needs two parents and mixes genes, giving more variety, like in humans and flowering plants."}
+      ]
+    },
+    {
+      "id": "social_studies",
+      "label": "Social Studies",
+      "icon": "🌍",
+      "description": "History, geography and civics - world events, governments, continents and economies.",
+      "faqs": [
+        {"q": "What is democracy?", "a": "Democracy means 'rule by the people'. Citizens choose their leaders through free and fair elections. Key features are majority rule, protection of minority rights, free press and an independent judiciary."},
+        {"q": "What was the Industrial Revolution?", "a": "The Industrial Revolution (roughly 1760-1840) was when hand production moved to machines and factories, starting in Britain. Steam power, railways and mass production transformed economies, cities and daily life."},
+        {"q": "What caused World War I?", "a": "World War I (1914-1918) was triggered by the assassination of Archduke Franz Ferdinand, but deep causes were nationalism, imperialism, militarism and alliances. It ended with the Treaty of Versailles in 1919."},
+        {"q": "What was World War II?", "a": "World War II (1939-1945) began with Germany's invasion of Poland. The Allies (UK, US, USSR, China) fought the Axis (Germany, Italy, Japan). It ended in 1945 and led to the founding of the United Nations."},
+        {"q": "What is the United Nations?", "a": "The United Nations (UN) was founded in 1945 to keep peace and encourage cooperation between countries. It has 193 member states, with the Security Council responsible for international peace."},
+        {"q": "What is the Indian Constitution?", "a": "The Constitution of India, adopted on 26 January 1950, is the supreme law of the country. It declares India a sovereign, socialist, secular, democratic republic and guarantees Fundamental Rights to all citizens."},
+        {"q": "What are Fundamental Rights?", "a": "Fundamental Rights in the Indian Constitution protect citizens' basic freedoms: equality, freedom of speech, protection from exploitation, religious freedom, cultural rights and the right to constitutional remedies."},
+        {"q": "What is globalization?", "a": "Globalization is the growing connection of countries through trade, investment, technology and culture. It lets goods and ideas move freely, but also raises debates about jobs, inequality and cultural identity."},
+        {"q": "What are the seven continents?", "a": "The seven continents are Asia (largest), Africa, North America, South America, Antarctica, Europe and Australia (smallest). Asia is the most populous, and Africa has the most countries."},
+        {"q": "What is climate change?", "a": "Climate change is the long-term shift in average temperatures and weather patterns, mainly caused by greenhouse gases from burning fossil fuels. It leads to rising sea levels, heatwaves and extreme weather."},
+        {"q": "What is the Cold War?", "a": "The Cold War (1947-1991) was the tense rivalry between the USA (capitalist) and USSR (communist) after World War II. It was fought through influence, space race and proxy wars rather than direct fighting, ending with the USSR's collapse."},
+        {"q": "What is civics?", "a": "Civics is the study of how government works and the rights and duties of citizens. It covers elections, laws, constitutions, local government and how citizens participate in public life."}
+      ]
+    },
+    {
+      "id": "english",
+      "label": "English",
+      "icon": "📖",
+      "description": "Grammar, parts of speech, writing skills and everyday language help.",
+      "faqs": [
+        {"q": "What are the parts of speech?", "a": "The eight parts of speech are noun (person/place/thing), pronoun (he, she), verb (action/state), adjective (describes a noun), adverb (describes a verb), preposition (in, on, at), conjunction (and, but) and interjection (wow!)."},
+        {"q": "What is a noun?", "a": "A noun is a word for a person, place, thing or idea. Examples: teacher (person), Mumbai (place), book (thing), freedom (idea). Proper nouns (India, Priya) are capitalized; common nouns are not."},
+        {"q": "What is a verb and its tenses?", "a": "A verb shows an action or state, e.g. run, is, think. Tense shows time: present (I write), past (I wrote), future (I will write). Each also has continuous and perfect forms (I am writing, I have written)."},
+        {"q": "What is the difference between active and passive voice?", "a": "In active voice the subject does the action: 'The dog bit the man'. In passive voice the subject receives it: 'The man was bitten by the dog'. Use active for clarity; use passive when the doer is unknown or unimportant."},
+        {"q": "What are the types of sentences?", "a": "Four types by purpose: declarative (statement - 'The sky is blue'), interrogative (question - 'Is it raining?'), imperative (command - 'Please sit down') and exclamatory (strong feeling - 'What a view!')."},
+        {"q": "What is a paragraph and how do I write one?", "a": "A paragraph is a group of sentences on one idea. Structure: a topic sentence, 2-4 supporting sentences with examples/evidence, and a concluding sentence. Start with an outline, write clearly, then revise."},
+        {"q": "What is direct and indirect speech?", "a": "Direct speech quotes exact words: She said, 'I am tired'. Indirect (reported) speech rewrites them: She said that she was tired. Tenses and pronouns usually shift back in indirect speech."},
+        {"q": "What is the difference between a synonym and an antonym?", "a": "A synonym is a word with a similar meaning (happy - glad). An antonym is a word with the opposite meaning (happy - sad). Use a thesaurus to enrich your writing."},
+        {"q": "What is figurative language?", "a": "Figurative language uses words beyond their literal meaning for effect. Simile compares with 'like/as' (brave as a lion), metaphor states one thing is another (time is a thief), and personification gives human traits to objects (the wind whispered)."},
+        {"q": "What are common grammar mistakes to avoid?", "a": "Common errors: their/there/they're, your/you're, its/it's, confusing then/than, using 'could of' instead of 'could have', and subject-verb mismatches (e.g. 'he go' should be 'he goes'). Read your work aloud to catch them."},
+        {"q": "How can I improve my English?", "a": "Read daily (books, news), keep a vocabulary notebook, practice writing short paragraphs, watch English with subtitles, speak with others, and get feedback on your mistakes. Consistency matters more than intensity."},
+        {"q": "What is a summary?", "a": "A summary is a short version of a text that captures the main ideas in your own words. It should be about one-third the length, include only key points, and never add your own opinion."}
+      ]
+    },
+    {
+      "id": "geometry",
+      "label": "Geometry",
+      "icon": "📐",
+      "description": "Shapes, angles, area, perimeter and volume - with live calculators.",
+      "faqs": [
+        {"q": "What is geometry?", "a": "Geometry is the branch of mathematics that studies shapes, sizes, positions and space. It includes points, lines, angles, 2D shapes (triangles, circles) and 3D solids (cubes, spheres)."},
+        {"q": "What is the difference between a point, line, ray and segment?", "a": "A point has no size, just a position. A line extends forever in both directions. A ray starts at one point and extends forever in one direction. A line segment has two fixed endpoints."},
+        {"q": "What are angles and their types?", "a": "An angle measures the turn between two lines. Types: acute (<90°), right (90°), obtuse (90°-180°), straight (180°) and reflex (>180°). Angles are measured in degrees with a protractor."},
+        {"q": "What is a triangle and its types?", "a": "A triangle is a 3-sided polygon. By sides: equilateral (all equal), isosceles (two equal), scalene (none equal). By angles: acute, right and obtuse. Area = 0.5 × base × height; angles sum to 180°."},
+        {"q": "What is a quadrilateral?", "a": "A quadrilateral is a 4-sided polygon. Types include square, rectangle, rhombus, parallelogram and trapezoid. All four angles of a quadrilateral sum to 360°."},
+        {"q": "What are the parts of a circle?", "a": "Key parts: radius (center to edge), diameter (2 × radius, edge to edge through center), circumference (the perimeter = 2πr), chord, arc, sector and center. π ≈ 3.14159."},
+        {"q": "What is area and perimeter?", "a": "Perimeter is the total length around a shape (in m or cm). Area is the space inside a shape (in m² or cm²). Rectangle: perimeter 2(l+w), area l×w. Circle: circumference 2πr, area πr²."},
+        {"q": "What is volume?", "a": "Volume is the space a 3D solid occupies, measured in cubic units. Cube = side³, cuboid = l×w×h, cylinder = πr²h, sphere = (4/3)πr³, cone = (1/3)πr²h. Ask me 'volume of a sphere with radius 5'."},
+        {"q": "What is the Pythagorean theorem?", "a": "For a right triangle, the hypotenuse squared equals the sum of the squares of the other two sides: a² + b² = c². Example: a 3-4-5 triangle because 3² + 4² = 9 + 16 = 25 = 5²."},
+        {"q": "What is a polygon?", "a": "A polygon is a closed 2D shape with straight sides. Names: triangle (3), quadrilateral (4), pentagon (5), hexagon (6), octagon (8), decagon (10). A regular polygon has all sides and angles equal."},
+        {"q": "What are parallel and perpendicular lines?", "a": "Parallel lines never meet, no matter how far they extend (railway tracks). Perpendicular lines meet at a right angle (90°), like the corner of a page."},
+        {"q": "What are 3D shapes (solids)?", "a": "3D shapes have length, width and height. Common solids: cube, cuboid, sphere, cylinder, cone and pyramid. They have faces, edges and vertices, and are measured by surface area and volume."}
+      ]
+    },
+    {
+      "id": "medical",
+      "label": "Medical & Health",
+      "icon": "🏥",
+      "description": "First aid, common health numbers (BP, sugar, BMI) and healthy-living basics.",
+      "faqs": [
+        {"q": "What is BMI and how is it interpreted?", "a": "BMI (Body Mass Index) is weight(kg) divided by height squared (m²). Ranges for adults: below 18.5 underweight, 18.5-24.9 normal, 25-29.9 overweight, 30+ obese. Ask me 'BMI for 70 kg and 175 cm' and I will calculate it."},
+        {"q": "What is normal blood pressure?", "a": "Normal blood pressure is around 120/80 mmHg. The top number (systolic) is pressure when the heart pumps; the bottom (diastolic) is pressure between beats. 140/90 or higher is considered high (hypertension)."},
+        {"q": "What is a normal blood sugar level?", "a": "Fasting blood sugar is normally 70-100 mg/dL. 100-125 suggests prediabetes and 126 or higher on two tests indicates diabetes. Post-meal (2 hours) sugar should usually be under 140 mg/dL."},
+        {"q": "What is first aid and why is it important?", "a": "First aid is the immediate care given before professional help arrives. It can save lives in emergencies like choking, bleeding, burns and cardiac arrest. Learn the basics: check breathing, call for help, and treat what you safely can."},
+        {"q": "How do I perform CPR?", "a": "CPR: 1) Ensure the area is safe, 2) check if the person is unresponsive and not breathing, 3) call emergency services, 4) push hard and fast in the center of the chest (about 100-120 compressions per minute), 5) continue until help arrives."},
+        {"q": "What is a fever and how should I manage it?", "a": "A fever is a body temperature above about 100.4°F (38°C), usually the body fighting an infection. Rest, drink fluids, and use paracetamol if uncomfortable. See a doctor if it is very high, lasts over 3 days, or comes with a stiff neck or rash."},
+        {"q": "What is a balanced diet?", "a": "A balanced diet gives your body the right mix of carbohydrates, proteins, fats, vitamins, minerals and water. Fill half your plate with fruits and vegetables, a quarter with protein, and a quarter with whole grains."},
+        {"q": "What are vitamins and their sources?", "a": "Vitamins are nutrients the body needs in small amounts. Vitamin A (carrots, eggs) for eyes; B vitamins (grains, meat) for energy; C (citrus fruits) for immunity; D (sunlight, fish) for bones; and K (leafy greens) for blood clotting."},
+        {"q": "Why is hygiene important?", "a": "Good hygiene prevents the spread of germs that cause infections. Wash hands with soap, brush teeth twice daily, shower regularly, and cover your mouth when coughing. Handwashing alone prevents many diseases."},
+        {"q": "What is vaccination?", "a": "Vaccination trains the immune system to fight a disease without getting sick first. It introduces a harmless part of a germ so the body makes antibodies. Vaccines have eliminated smallpox and control polio, measles and more."},
+        {"q": "What causes headaches and when should I worry?", "a": "Most headaches come from stress, dehydration, lack of sleep, eyestrain or hunger. Rest, water and sleep usually help. See a doctor if a headache is sudden and severe, follows a head injury, or comes with fever, confusion or a stiff neck."},
+        {"q": "How much water should I drink?", "a": "A common guideline is about 8 glasses (about 2 liters) a day, but needs vary with activity, weather and body size. A simple rule: drink when thirsty and check that urine is pale yellow."},
+        {"q": "What is a heart-healthy lifestyle?", "a": "Eat plenty of vegetables and whole grains, limit salt, sugar and fried food, exercise 30 minutes most days, maintain a healthy weight, avoid smoking, and manage stress. Regular checkups catch problems early."}
+      ]
+    },
+    {
+      "id": "arts",
+      "label": "Arts",
+      "icon": "🎨",
+      "description": "Visual arts, music, literature and design fundamentals for students and creators.",
+      "faqs": [
+        {"q": "What is art?", "a": "Art is the creative expression of ideas, emotions and beauty through visual, sound, movement or words. It includes painting, drawing, sculpture, music, dance, drama, literature and digital media."},
+        {"q": "What are the elements of art?", "a": "The seven elements of art are line, shape, form, space, value (lightness/darkness), color and texture. They are the building blocks artists use to create any artwork."},
+        {"q": "What are the principles of design?", "a": "The principles of design organize the elements: balance, contrast, emphasis, movement, pattern, rhythm and unity. Together they make a composition feel harmonious and interesting."},
+        {"q": "What is color theory?", "a": "Color theory explains how colors mix and relate. Primary colors (red, yellow, blue) mix to make secondary colors (orange, green, purple). Complementary colors sit opposite each other on the wheel and create strong contrast."},
+        {"q": "What is the difference between watercolor, acrylic and oil paint?", "a": "Watercolor is transparent and dries fast. Acrylic is versatile, water-based and dries quickly. Oil paint dries slowly, blends smoothly and has rich, deep colors. Beginners often start with acrylic or watercolor."},
+        {"q": "What is music made of?", "a": "Music is built from notes (pitches), rhythm (the beat and timing), melody (the main tune), harmony (supporting notes) and dynamics (loudness). Notes are named A-G and grouped into scales like the major scale."},
+        {"q": "What is theatre / drama?", "a": "Theatre is performing a story live on stage using actors, dialogue, costumes, sets and lighting. Drama teaches confidence, empathy and teamwork. Key roles are actor, director, playwright and stage crew."},
+        {"q": "What is sculpture?", "a": "Sculpture is 3D art created by carving (removing material like wood or stone), modeling (adding material like clay) or casting (pouring metal). It is viewed from all sides."},
+        {"q": "What is photography?", "a": "Photography captures light to make images. The exposure triangle is aperture (light amount), shutter speed (time) and ISO (sensitivity). Rule of thirds: place subjects along imaginary lines dividing the frame into thirds."},
+        {"q": "What are famous art movements?", "a": "Renaissance (1400s-1600s, realism, Leonardo da Vinci), Impressionism (1800s, light and color, Monet), Cubism (Picasso, geometric shapes), Surrealism (dreams, Dali) and Pop Art (everyday objects, Warhol)."},
+        {"q": "What is literature and poetry?", "a": "Literature is written art: fiction, non-fiction, poetry and drama. Poetry uses rhythm, rhyme and imagery; a poem's lines are organized into stanzas. Literature lets us explore human experiences through stories."},
+        {"q": "How do I get better at drawing?", "a": "Practice daily: sketch simple objects, study light and shadow (shading), learn proportions, use basic shapes (circles, boxes) as foundations, and copy masters. Keep a sketchbook and be patient - skill grows with practice."}
+      ]
+    },
+    {
+      "id": "commerce",
+      "label": "Commerce",
+      "icon": "💰",
+      "description": "Accounting, business, money, interest, taxes and the economy made practical.",
+      "faqs": [
+        {"q": "What is commerce?", "a": "Commerce is the activity of buying and selling goods and services. It includes trade, banking, insurance, transport and communication. It links producers to consumers and keeps the economy moving."},
+        {"q": "What is accounting?", "a": "Accounting is recording and summarizing financial transactions of a business. It produces financial statements (income statement, balance sheet, cash flow) that help owners, investors and tax authorities understand performance."},
+        {"q": "What is the difference between debit and credit?", "a": "In double-entry accounting, every transaction has two sides. Debit (left side) increases assets and expenses; credit (right side) increases liabilities, equity and income. The two sides must always balance."},
+        {"q": "What is the difference between an asset and a liability?", "a": "An asset is something you own that has value (cash, inventory, machinery). A liability is what you owe (loans, accounts payable). Equity = Assets - Liabilities, the owner's claim on the business."},
+        {"q": "What is a balance sheet?", "a": "A balance sheet is a financial snapshot showing what a company owns (assets), owes (liabilities) and the owner's share (equity) at one moment. The basic equation: Assets = Liabilities + Equity."},
+        {"q": "What is profit and loss?", "a": "Profit is when selling price is higher than cost price; loss is when it is lower. Profit% = (profit/cost) × 100. Ask me 'profit if cost 200 and selling 250' and I will compute it."},
+        {"q": "What is GST?", "a": "GST (Goods and Services Tax) is a single consumption tax on goods and services. Businesses collect GST on sales and claim credit for GST paid on purchases. In India it is divided into CGST, SGST and IGST. Ask me 'gst on 1000 at 18%'."},
+        {"q": "What is inflation?", "a": "Inflation is the general rise in prices over time, reducing the purchasing power of money. If inflation is 6% a year, what costs ₹100 today will cost about ₹106 next year. Central banks try to keep it low and stable."},
+        {"q": "What is supply and demand?", "a": "Supply is how much sellers offer; demand is how much buyers want. When demand rises or supply falls, prices rise. When supply rises or demand falls, prices fall. Equilibrium price balances the two."},
+        {"q": "What is simple vs compound interest?", "a": "Simple interest is paid only on the principal: (P×R×T)/100. Compound interest is paid on the principal plus previously earned interest, so it grows faster. Ask me to calculate either one for you."},
+        {"q": "What is the stock market?", "a": "The stock market is a place where shares (parts of companies) are bought and sold. Companies list shares to raise money; investors buy them hoping for price gains and dividends. Prices move with company performance and market sentiment."},
+        {"q": "What is marketing?", "a": "Marketing is everything a business does to understand customers and get them to buy: market research, branding, advertising, pricing and distribution. The 4 Ps are Product, Price, Place and Promotion."},
+        {"q": "What is an economy?", "a": "An economy is a system of producing, distributing and consuming goods and services. Types include market (prices set by supply/demand), planned (government controls) and mixed (both). GDP measures the total value of everything a country produces."}
+      ]
+    },
+    {
+      "id": "daily_life",
+      "label": "Daily Life",
+      "icon": "📱",
+      "description": "Unit conversions, date calculations, budgeting, time management and everyday helpers.",
+      "faqs": [
+        {"q": "How do I convert units?", "a": "Ask me to convert for you: 'convert 10 km to miles', '5 kg to pounds', '25 celsius in fahrenheit', '2 liters to gallons' or 'how many feet in 100 meters'. I handle length, weight, volume, time, speed and temperature."},
+        {"q": "How many days are between two dates?", "a": "Ask me like 'how many days between 2024-01-01 and 2024-03-01' and I will compute the exact number of days."},
+        {"q": "What can you do?", "a": "I solve arithmetic and word problems, run physics/geometry/commerce calculators (force, area, volume, interest, GST, BMI), convert units, count days between dates, compute averages and GCD/LCM, and answer questions across mathematics, science, biology, social studies, English, geometry, medical, arts, commerce and daily life."},
+        {"q": "How does this chatbot work?", "a": "Omni StudyMate has a 'brain' in chatbot_engine.py. For math and formula questions it uses built-in calculators, and for factual questions it matches your words against a large knowledge base using a TF-IDF retriever. The web interface is built with Streamlit."},
+        {"q": "What is a good daily study routine?", "a": "Try the Pomodoro method: 25 minutes focused study, 5 minutes break. Study hardest subjects when you are freshest, review within 24 hours, test yourself, and get 7-8 hours of sleep. Small daily sessions beat one long cram."},
+        {"q": "How do I plan a simple budget?", "a": "Use the 50/30/20 rule: 50% of income for needs (rent, food, bills), 30% for wants, 20% for savings and debt. Track spending with an app or notebook, cut waste, and pay yourself first each month."},
+        {"q": "How do I make a simple cup of tea?", "a": "Boil water, add tea leaves or a bag and steep 3-5 minutes, then add milk and sugar to taste, and strain. For chai, simmer tea with milk, cardamom and ginger for 5 minutes."},
+        {"q": "How do I cook rice without a cooker?", "a": "Rinse 1 cup of rice, add 2 cups of water and a pinch of salt, bring to a boil, then cover and simmer on low for 15-18 minutes until water is absorbed. Let it rest 5 minutes before fluffing with a fork."},
+        {"q": "What should I pack for a trip?", "a": "Basics: ID and tickets, phone + charger, clothes for the weather, toiletries, medicines, cash/cards, water bottle and a day bag. Roll clothes to save space and keep electronics in hand luggage."},
+        {"q": "What is a healthy morning routine?", "a": "Wake at a consistent time, drink water, stretch or exercise for 10-15 minutes, eat a balanced breakfast, plan your top 3 tasks, and spend 5 minutes on something you enjoy before starting work or study."},
+        {"q": "How can I stop procrastinating?", "a": "Break big tasks into tiny steps, use the 2-minute rule (start anything that takes under 2 minutes now), remove distractions, set a timer, and reward yourself after finishing. Focus on starting, not perfection."},
+        {"q": "Where can I learn more?", "a": "This is a demo chatbot for learning and deployment practice. In a real product, this answer would link to official textbooks, Khan Academy, NCERT and your institution's study portal."}
+      ]
+    },
+    {
+      "id": "technology",
+      "label": "Technology & Coding",
+      "icon": "💻",
+      "description": "Programming, computers, web development and AI - plus ready-to-run code templates.",
+      "faqs": [
+        {"q": "What is a computer program?", "a": "A program is a set of step-by-step instructions a computer follows to do a task. Programs are written in languages like Python, Java, C++ and JavaScript, then turned into machine code that the CPU executes."},
+        {"q": "What is Python?", "a": "Python is a beginner-friendly programming language with clear, readable syntax. It is used for web apps, data science, AI, automation and scripting. You run code with a .py file, and the Python interpreter executes it line by line."},
+        {"q": "What is a variable?", "a": "A variable is a named box that stores a value, like `age = 15` or `name = \"Aisha\"`. In Python you don't declare types; in Java and C you do (int, String, etc.). Variables let programs remember and reuse data."},
+        {"q": "What is a function?", "a": "A function is a reusable block of code that does one job. You define it once (`def add(a, b): return a + b`) and call it many times (`add(2, 3)`). Functions take inputs (parameters) and can return outputs."},
+        {"q": "What is a loop (for and while)?", "a": "A loop repeats code. A `for` loop repeats a fixed number of times: `for i in range(5): print(i)`. A `while` loop repeats while a condition is true: `while n > 0: n -= 1`. Loops avoid writing the same line many times."},
+        {"q": "What is an array / list?", "a": "An array (or list) is an ordered collection of items you can access by index: `nums = [10, 20, 30]` then `nums[0]` is 10. Python lists can hold mixed types; languages like Java use a fixed type."},
+        {"q": "What is object-oriented programming (OOP)?", "a": "OOP organizes code around objects that combine data (attributes) and behavior (methods). Its four pillars are encapsulation, inheritance, polymorphism and abstraction. It makes large programs easier to build and maintain."},
+        {"q": "What is the difference between a class and an object?", "a": "A class is a blueprint or template; an object is a concrete instance made from it. `class Dog:` defines the blueprint, then `my_dog = Dog()` creates an actual dog object with its own name and age."},
+        {"q": "What is HTML?", "a": "HTML (HyperText Markup Language) is the skeleton of web pages. It uses tags like `<h1>`, `<p>`, `<a>` and `<img>` to structure content. Browsers read HTML and display it as a page."},
+        {"q": "What is CSS?", "a": "CSS (Cascading Style Sheets) styles web pages: colors, fonts, spacing and layout. You can write it inline, in a `<style>` tag, or in a separate .css file linked from the HTML. Selectors like `h1 { color: red; }` target elements."},
+        {"q": "What is JavaScript?", "a": "JavaScript makes web pages interactive. It runs in the browser and can change content, handle clicks, validate forms and fetch data. Example: `document.getElementById('demo').textContent = 'Hello';`."},
+        {"q": "What is a database and SQL?", "a": "A database stores data in structured tables of rows and columns. SQL (Structured Query Language) talks to databases: `SELECT * FROM students WHERE grade = 10;` fetches rows, and INSERT, UPDATE, DELETE modify them."},
+        {"q": "What is an algorithm?", "a": "An algorithm is a precise step-by-step recipe to solve a problem, independent of any programming language. Examples: sorting numbers, binary search, Dijkstra's shortest path. Good algorithms use less time and memory."},
+        {"q": "What is artificial intelligence (AI)?", "a": "AI lets computers do tasks that normally need human intelligence: understanding language, recognizing images and making decisions. Machine learning (ML) is a part of AI where models learn patterns from data instead of being hand-coded."},
+        {"q": "What is a compiler vs an interpreter?", "a": "Both translate source code to machine code. A compiler translates the whole program at once into an executable (C, Java), so it runs fast later. An interpreter translates and runs line by line (Python, JavaScript), catching errors one at a time."},
+        {"q": "What is an operating system?", "a": "An operating system (OS) is the software that manages hardware and programs: Windows, macOS, Linux, Android and iOS. It handles files, memory, processes and devices so apps can run without fighting over resources."}
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "id": "velocity",
+      "category": "science",
+      "name": "Velocity / Speed",
+      "formula": "v = d / t",
+      "aliases": ["velocity", "speed", "average speed"],
+      "expr": "d/t",
+      "unit": "m/s",
+      "explanation": "Speed or velocity is the distance travelled divided by the time taken.",
+      "example": "velocity when distance is 100 meters and time is 20 seconds",
+      "params": [
+        {"key": "d", "label": "Distance", "unit": "m", "alias": ["distance", "dist"], "units": {"m": 1, "meters": 1, "metre": 1, "metres": 1, "km": 1000, "kilometer": 1000, "kilometers": 1000, "cm": 0.01, "centimeter": 0.01, "centimeters": 0.01, "mile": 1609.34, "miles": 1609.34}},
+        {"key": "t", "label": "Time", "unit": "s", "alias": ["time", "duration"], "units": {"s": 1, "sec": 1, "second": 1, "seconds": 1, "min": 60, "minute": 60, "minutes": 60, "h": 3600, "hour": 3600, "hours": 3600, "hr": 3600}}
+      ]
+    },
+    {
+      "id": "acceleration",
+      "category": "science",
+      "name": "Acceleration",
+      "formula": "a = v / t",
+      "aliases": ["acceleration"],
+      "expr": "v/t",
+      "unit": "m/s²",
+      "explanation": "Acceleration is the change in velocity divided by the time it takes.",
+      "example": "acceleration when velocity changes by 20 m/s in 5 seconds",
+      "params": [
+        {"key": "v", "label": "Change in velocity", "unit": "m/s", "alias": ["velocity", "speed", "change in velocity"], "units": {"m/s": 1, "km/h": 0.277778, "kmh": 0.277778, "mph": 0.44704}},
+        {"key": "t", "label": "Time", "unit": "s", "alias": ["time", "duration"], "units": {"s": 1, "sec": 1, "second": 1, "seconds": 1, "min": 60, "minute": 60, "minutes": 60, "h": 3600, "hour": 3600, "hours": 3600, "hr": 3600}}
+      ]
+    },
+    {
+      "id": "force",
+      "category": "science",
+      "name": "Force (Newton's 2nd law)",
+      "formula": "F = m × a",
+      "aliases": ["force"],
+      "expr": "m*a",
+      "unit": "N (newtons)",
+      "explanation": "Force equals mass times acceleration. A 10 kg object accelerating at 5 m/s² needs a 50 N force.",
+      "example": "force for mass 10 kg and acceleration 5",
+      "params": [
+        {"key": "m", "label": "Mass", "unit": "kg", "alias": ["mass"], "units": {"kg": 1, "kilogram": 1, "kilograms": 1, "g": 0.001, "gram": 0.001, "grams": 0.001, "lb": 0.453592, "lbs": 0.453592, "pound": 0.453592, "pounds": 0.453592}},
+        {"key": "a", "label": "Acceleration", "unit": "m/s²", "alias": ["acceleration"], "units": {"m/s2": 1, "m/s^2": 1, "m/s": 1}}
+      ]
+    },
+    {
+      "id": "work",
+      "category": "science",
+      "name": "Work",
+      "formula": "W = F × d",
+      "aliases": ["work done", "work"],
+      "expr": "F*d",
+      "unit": "J (joules)",
+      "explanation": "Work is done when a force moves an object over a distance: W = force × distance.",
+      "example": "work when force is 50 N and distance is 2 m",
+      "params": [
+        {"key": "F", "label": "Force", "unit": "N", "alias": ["force"], "units": {"n": 1, "newton": 1, "newtons": 1, "kn": 1000, "kilonewton": 1000, "kilonewtons": 1000}},
+        {"key": "d", "label": "Distance", "unit": "m", "alias": ["distance", "displacement"], "units": {"m": 1, "meters": 1, "metres": 1, "km": 1000, "kilometers": 1000, "cm": 0.01, "centimeters": 0.01}}
+      ]
+    },
+    {
+      "id": "power",
+      "category": "science",
+      "name": "Power",
+      "formula": "P = W / t",
+      "aliases": ["power"],
+      "expr": "W/t",
+      "unit": "W (watts)",
+      "explanation": "Power is the rate of doing work: work divided by time.",
+      "example": "power when work is 1000 joules and time is 10 seconds",
+      "params": [
+        {"key": "W", "label": "Work", "unit": "J", "alias": ["work", "energy"], "units": {"j": 1, "joule": 1, "joules": 1, "kj": 1000, "kilojoules": 1000, "calorie": 4.184, "calories": 4.184}},
+        {"key": "t", "label": "Time", "unit": "s", "alias": ["time", "duration"], "units": {"s": 1, "sec": 1, "second": 1, "seconds": 1, "min": 60, "minute": 60, "minutes": 60, "h": 3600, "hour": 3600, "hours": 3600, "hr": 3600}}
+      ]
+    },
+    {
+      "id": "kinetic_energy",
+      "category": "science",
+      "name": "Kinetic Energy",
+      "formula": "KE = ½ × m × v²",
+      "aliases": ["kinetic energy"],
+      "expr": "0.5*m*v**2",
+      "unit": "J (joules)",
+      "explanation": "Kinetic energy is the energy an object has because it is moving: half mass times velocity squared.",
+      "example": "kinetic energy for mass 2 kg and velocity 5 m/s",
+      "params": [
+        {"key": "m", "label": "Mass", "unit": "kg", "alias": ["mass"], "units": {"kg": 1, "kilogram": 1, "kilograms": 1, "g": 0.001, "gram": 0.001, "grams": 0.001}},
+        {"key": "v", "label": "Velocity", "unit": "m/s", "alias": ["velocity", "speed"], "units": {"m/s": 1, "km/h": 0.277778, "kmh": 0.277778, "kmph": 0.277778}}
+      ]
+    },
+    {
+      "id": "potential_energy",
+      "category": "science",
+      "name": "Gravitational Potential Energy",
+      "formula": "PE = m × g × h",
+      "aliases": ["potential energy", "gravitational potential energy"],
+      "expr": "m*9.8*h",
+      "unit": "J (joules)",
+      "explanation": "Potential energy is stored energy due to height: mass × gravity (9.8) × height.",
+      "example": "potential energy for mass 5 kg and height 10 m",
+      "params": [
+        {"key": "m", "label": "Mass", "unit": "kg", "alias": ["mass"], "units": {"kg": 1, "kilogram": 1, "kilograms": 1, "g": 0.001, "gram": 0.001, "grams": 0.001}},
+        {"key": "h", "label": "Height", "unit": "m", "alias": ["height"], "units": {"m": 1, "meters": 1, "metres": 1, "cm": 0.01, "centimeters": 0.01, "ft": 0.3048, "feet": 0.3048, "km": 1000}}
+      ]
+    },
+    {
+      "id": "density",
+      "category": "science",
+      "name": "Density",
+      "formula": "ρ = m / V",
+      "aliases": ["density"],
+      "expr": "m/v",
+      "unit": "kg/m³",
+      "explanation": "Density is mass divided by volume. Oil floats on water because it is less dense.",
+      "example": "density of a mass 200 g and volume 100 ml",
+      "params": [
+        {"key": "m", "label": "Mass", "unit": "kg", "alias": ["mass"], "units": {"kg": 1, "kilogram": 1, "kilograms": 1, "g": 0.001, "gram": 0.001, "grams": 0.001}},
+        {"key": "v", "label": "Volume", "unit": "m³", "alias": ["volume"], "units": {"m3": 1, "m^3": 1, "cm3": 1e-06, "cm^3": 1e-06, "ml": 1e-06, "milliliter": 1e-06, "milliliters": 1e-06, "l": 0.001, "liter": 0.001, "liters": 0.001, "litre": 0.001, "litres": 0.001}}
+      ]
+    },
+    {
+      "id": "pressure",
+      "category": "science",
+      "name": "Pressure",
+      "formula": "P = F / A",
+      "aliases": ["pressure"],
+      "expr": "F/A",
+      "unit": "Pa (pascals)",
+      "explanation": "Pressure is force spread over an area. A sharp knife cuts well because a small area concentrates the force.",
+      "example": "pressure when force is 100 N and area is 2 m2",
+      "params": [
+        {"key": "F", "label": "Force", "unit": "N", "alias": ["force"], "units": {"n": 1, "newton": 1, "newtons": 1}},
+        {"key": "A", "label": "Area", "unit": "m²", "alias": ["area"], "units": {"m2": 1, "m^2": 1, "sqm": 1, "cm2": 1e-04, "cm^2": 1e-04, "mm2": 1e-06, "mm^2": 1e-06}}
+      ]
+    },
+    {
+      "id": "momentum",
+      "category": "science",
+      "name": "Momentum",
+      "formula": "p = m × v",
+      "aliases": ["momentum"],
+      "expr": "m*v",
+      "unit": "kg·m/s",
+      "explanation": "Momentum is mass times velocity. It measures how hard it is to stop a moving object.",
+      "example": "momentum for mass 10 kg and velocity 4 m/s",
+      "params": [
+        {"key": "m", "label": "Mass", "unit": "kg", "alias": ["mass"], "units": {"kg": 1, "kilogram": 1, "kilograms": 1, "g": 0.001, "gram": 0.001, "grams": 0.001}},
+        {"key": "v", "label": "Velocity", "unit": "m/s", "alias": ["velocity", "speed"], "units": {"m/s": 1, "km/h": 0.277778, "kmh": 0.277778, "mph": 0.44704}}
+      ]
+    },
+    {
+      "id": "ohms_law",
+      "category": "science",
+      "name": "Ohm's Law (Voltage)",
+      "formula": "V = I × R",
+      "aliases": ["voltage", "ohms law", "ohm's law", "potential difference"],
+      "expr": "I*R",
+      "unit": "V (volts)",
+      "explanation": "Voltage equals current times resistance in a circuit.",
+      "example": "voltage for current 2 amps and resistance 10 ohm",
+      "params": [
+        {"key": "I", "label": "Current", "unit": "A", "alias": ["current"], "units": {"a": 1, "amp": 1, "amps": 1, "ampere": 1, "amperes": 1, "ma": 0.001, "milliamps": 0.001}},
+        {"key": "R", "label": "Resistance", "unit": "Ω", "alias": ["resistance"], "units": {"ohm": 1, "ohms": 1, "Ω": 1, "kohm": 1000, "kΩ": 1000}}
+      ]
+    },
+    {
+      "id": "wave_speed",
+      "category": "science",
+      "name": "Wave Speed",
+      "formula": "v = f × λ",
+      "aliases": ["wave speed", "wavelength"],
+      "expr": "f*w",
+      "unit": "m/s",
+      "explanation": "The speed of a wave equals its frequency times its wavelength.",
+      "example": "wave speed for frequency 5 hertz and wavelength 2 m",
+      "params": [
+        {"key": "f", "label": "Frequency", "unit": "Hz", "alias": ["frequency"], "units": {"hz": 1, "hertz": 1, "khz": 1000, "mhz": 1000000}},
+        {"key": "w", "label": "Wavelength", "unit": "m", "alias": ["wavelength"], "units": {"m": 1, "meters": 1, "metres": 1, "cm": 0.01, "centimeters": 0.01, "nm": 1e-09, "nanometers": 1e-09}}
+      ]
+    },
+    {
+      "id": "circle_area",
+      "category": "geometry",
+      "name": "Area of a Circle",
+      "formula": "A = π × r²",
+      "aliases": ["area"],
+      "topics": ["circle"],
+      "expr": "pi*r**2",
+      "unit": "square units",
+      "explanation": "The area of a circle is pi times the radius squared.",
+      "example": "area of a circle with radius 7",
+      "params": [
+        {"key": "r", "label": "Radius", "unit": "units", "half": true, "alias": ["radius", "radii", "diameter", "dia"], "units": {}}
+      ]
+    },
+    {
+      "id": "circle_circumference",
+      "category": "geometry",
+      "name": "Circumference of a Circle",
+      "formula": "C = 2 × π × r",
+      "aliases": ["circumference", "perimeter"],
+      "topics": ["circle"],
+      "expr": "2*pi*r",
+      "unit": "units",
+      "explanation": "The circumference is the distance around a circle: 2 × pi × radius.",
+      "example": "circumference of a circle with radius 7",
+      "params": [
+        {"key": "r", "label": "Radius", "unit": "units", "half": true, "alias": ["radius", "radii", "diameter", "dia"], "units": {}}
+      ]
+    },
+    {
+      "id": "rectangle_area",
+      "category": "geometry",
+      "name": "Area of a Rectangle",
+      "formula": "A = l × w",
+      "aliases": ["area"],
+      "topics": ["rectangle"],
+      "expr": "l*w",
+      "unit": "square units",
+      "explanation": "Area of a rectangle is length times width.",
+      "example": "area of a rectangle of length 5 and width 3",
+      "params": [
+        {"key": "l", "label": "Length", "unit": "units", "alias": ["length"], "units": {}},
+        {"key": "w", "label": "Width", "unit": "units", "alias": ["width", "breadth"], "units": {}}
+      ]
+    },
+    {
+      "id": "rectangle_perimeter",
+      "category": "geometry",
+      "name": "Perimeter of a Rectangle",
+      "formula": "P = 2 × (l + w)",
+      "aliases": ["perimeter", "perimetre"],
+      "topics": ["rectangle"],
+      "expr": "2*(l+w)",
+      "unit": "units",
+      "explanation": "Perimeter of a rectangle is twice the sum of length and width.",
+      "example": "perimeter of a rectangle of length 5 and width 3",
+      "params": [
+        {"key": "l", "label": "Length", "unit": "units", "alias": ["length"], "units": {}},
+        {"key": "w", "label": "Width", "unit": "units", "alias": ["width", "breadth"], "units": {}}
+      ]
+    },
+    {
+      "id": "square_area",
+      "category": "geometry",
+      "name": "Area of a Square",
+      "formula": "A = s²",
+      "aliases": ["area"],
+      "topics": ["square"],
+      "expr": "s**2",
+      "unit": "square units",
+      "explanation": "Area of a square is the side length squared.",
+      "example": "area of a square with side 4",
+      "params": [
+        {"key": "s", "label": "Side", "unit": "units", "alias": ["side"], "units": {}}
+      ]
+    },
+    {
+      "id": "square_perimeter",
+      "category": "geometry",
+      "name": "Perimeter of a Square",
+      "formula": "P = 4 × s",
+      "aliases": ["perimeter", "perimetre"],
+      "topics": ["square"],
+      "expr": "4*s",
+      "unit": "units",
+      "explanation": "Perimeter of a square is four times the side length.",
+      "example": "perimeter of a square with side 4",
+      "params": [
+        {"key": "s", "label": "Side", "unit": "units", "alias": ["side"], "units": {}}
+      ]
+    },
+    {
+      "id": "triangle_area",
+      "category": "geometry",
+      "name": "Area of a Triangle",
+      "formula": "A = ½ × b × h",
+      "aliases": ["area"],
+      "topics": ["triangle"],
+      "expr": "0.5*b*h",
+      "unit": "square units",
+      "explanation": "Area of a triangle is half of base times height.",
+      "example": "area of a triangle with base 10 and height 5",
+      "params": [
+        {"key": "b", "label": "Base", "unit": "units", "alias": ["base"], "units": {}},
+        {"key": "h", "label": "Height", "unit": "units", "alias": ["height"], "units": {}}
+      ]
+    },
+    {
+      "id": "trapezoid_area",
+      "category": "geometry",
+      "name": "Area of a Trapezoid",
+      "formula": "A = ½ × (a + b) × h",
+      "aliases": ["area"],
+      "topics": ["trapezoid", "trapezium"],
+      "expr": "0.5*(a+b)*h",
+      "unit": "square units",
+      "explanation": "Area of a trapezoid is half the sum of the parallel sides times the height.",
+      "example": "area of a trapezoid with parallel sides 4 and 6 and height 3",
+      "params": [
+        {"key": "a", "label": "Parallel side 1", "unit": "units", "alias": ["parallel side", "base"], "units": {}},
+        {"key": "b", "label": "Parallel side 2", "unit": "units", "alias": ["parallel side", "base"], "units": {}},
+        {"key": "h", "label": "Height", "unit": "units", "alias": ["height"], "units": {}}
+      ]
+    },
+    {
+      "id": "sphere_volume",
+      "category": "geometry",
+      "name": "Volume of a Sphere",
+      "formula": "V = (4/3) × π × r³",
+      "aliases": ["volume"],
+      "topics": ["sphere"],
+      "expr": "(4/3)*pi*r**3",
+      "unit": "cubic units",
+      "explanation": "The volume of a sphere is four-thirds pi times the radius cubed.",
+      "example": "volume of a sphere with radius 5",
+      "params": [
+        {"key": "r", "label": "Radius", "unit": "units", "half": true, "alias": ["radius", "radii", "diameter", "dia"], "units": {}}
+      ]
+    },
+    {
+      "id": "sphere_surface",
+      "category": "geometry",
+      "name": "Surface Area of a Sphere",
+      "formula": "A = 4 × π × r²",
+      "aliases": ["surface area", "area"],
+      "topics": ["sphere"],
+      "expr": "4*pi*r**2",
+      "unit": "square units",
+      "explanation": "The surface area of a sphere is four times pi times the radius squared.",
+      "example": "surface area of a sphere with radius 5",
+      "params": [
+        {"key": "r", "label": "Radius", "unit": "units", "half": true, "alias": ["radius", "radii", "diameter", "dia"], "units": {}}
+      ]
+    },
+    {
+      "id": "cylinder_volume",
+      "category": "geometry",
+      "name": "Volume of a Cylinder",
+      "formula": "V = π × r² × h",
+      "aliases": ["volume"],
+      "topics": ["cylinder"],
+      "expr": "pi*r**2*h",
+      "unit": "cubic units",
+      "explanation": "The volume of a cylinder is the area of its circular base times its height.",
+      "example": "volume of a cylinder with radius 3 and height 10",
+      "params": [
+        {"key": "r", "label": "Radius", "unit": "units", "half": true, "alias": ["radius", "radii", "diameter", "dia"], "units": {}},
+        {"key": "h", "label": "Height", "unit": "units", "alias": ["height"], "units": {}}
+      ]
+    },
+    {
+      "id": "cylinder_surface",
+      "category": "geometry",
+      "name": "Surface Area of a Cylinder",
+      "formula": "A = 2πr(r + h)",
+      "aliases": ["surface area", "surface"],
+      "topics": ["cylinder"],
+      "expr": "2*pi*r*(r+h)",
+      "unit": "square units",
+      "explanation": "The surface area of a cylinder is the curved area plus the two circular ends.",
+      "example": "surface area of a cylinder with radius 3 and height 10",
+      "params": [
+        {"key": "r", "label": "Radius", "unit": "units", "half": true, "alias": ["radius", "radii", "diameter", "dia"], "units": {}},
+        {"key": "h", "label": "Height", "unit": "units", "alias": ["height"], "units": {}}
+      ]
+    },
+    {
+      "id": "cone_volume",
+      "category": "geometry",
+      "name": "Volume of a Cone",
+      "formula": "V = (1/3) × π × r² × h",
+      "aliases": ["volume"],
+      "topics": ["cone"],
+      "expr": "(1/3)*pi*r**2*h",
+      "unit": "cubic units",
+      "explanation": "The volume of a cone is one-third of the cylinder with the same base and height.",
+      "example": "volume of a cone with radius 3 and height 7",
+      "params": [
+        {"key": "r", "label": "Radius", "unit": "units", "half": true, "alias": ["radius", "radii", "diameter", "dia"], "units": {}},
+        {"key": "h", "label": "Height", "unit": "units", "alias": ["height"], "units": {}}
+      ]
+    },
+    {
+      "id": "cube_volume",
+      "category": "geometry",
+      "name": "Volume of a Cube",
+      "formula": "V = s³",
+      "aliases": ["volume"],
+      "topics": ["cube"],
+      "expr": "s**3",
+      "unit": "cubic units",
+      "explanation": "The volume of a cube is the side length cubed.",
+      "example": "volume of a cube with side 4",
+      "params": [
+        {"key": "s", "label": "Side", "unit": "units", "alias": ["side"], "units": {}}
+      ]
+    },
+    {
+      "id": "cuboid_volume",
+      "category": "geometry",
+      "name": "Volume of a Cuboid / Box",
+      "formula": "V = l × w × h",
+      "aliases": ["volume"],
+      "topics": ["cuboid", "box"],
+      "expr": "l*w*h",
+      "unit": "cubic units",
+      "explanation": "The volume of a cuboid (box) is length times width times height.",
+      "example": "volume of a box with length 5, width 3 and height 2",
+      "params": [
+        {"key": "l", "label": "Length", "unit": "units", "alias": ["length"], "units": {}},
+        {"key": "w", "label": "Width", "unit": "units", "alias": ["width", "breadth"], "units": {}},
+        {"key": "h", "label": "Height", "unit": "units", "alias": ["height"], "units": {}}
+      ]
+    },
+    {
+      "id": "pythagoras",
+      "category": "geometry",
+      "name": "Pythagoras Theorem (Hypotenuse)",
+      "formula": "c = √(a² + b²)",
+      "aliases": ["hypotenuse", "pythagoras", "pythagorean", "right triangle", "right angle"],
+      "expr": "sqrt(a**2 + b**2)",
+      "unit": "units",
+      "explanation": "The hypotenuse (longest side) of a right triangle: c = square root of (a² + b²).",
+      "example": "hypotenuse of 3 and 4",
+      "params": [
+        {"key": "a", "label": "Side a", "unit": "units", "alias": [], "units": {}},
+        {"key": "b", "label": "Side b", "unit": "units", "alias": [], "units": {}}
+      ]
+    },
+    {
+      "id": "distance_points",
+      "category": "geometry",
+      "name": "Distance Between Two Points",
+      "formula": "d = √((x₂-x₁)² + (y₂-y₁)²)",
+      "aliases": ["distance between"],
+      "expr": "sqrt((x1-x2)**2 + (y1-y2)**2)",
+      "unit": "units",
+      "explanation": "The straight-line distance between two points (x1, y1) and (x2, y2).",
+      "example": "distance between (1, 2) and (4, 6)",
+      "params": [
+        {"key": "x1", "label": "x1", "unit": "units", "alias": [], "units": {}},
+        {"key": "y1", "label": "y1", "unit": "units", "alias": [], "units": {}},
+        {"key": "x2", "label": "x2", "unit": "units", "alias": [], "units": {}},
+        {"key": "y2", "label": "y2", "unit": "units", "alias": [], "units": {}}
+      ]
+    },
+    {
+      "id": "simple_interest",
+      "category": "commerce",
+      "name": "Simple Interest",
+      "formula": "SI = (P × R × T) / 100",
+      "aliases": ["simple interest"],
+      "expr": "P*R*T/100",
+      "unit": "same currency as principal",
+      "explanation": "Simple interest = principal × rate × time divided by 100.",
+      "example": "simple interest on 1000 at 5% for 2 years",
+      "params": [
+        {"key": "P", "label": "Principal", "unit": "currency", "alias": ["principal", "loan", "investment", "deposit"], "units": {}},
+        {"key": "R", "label": "Rate", "unit": "% per year", "alias": ["rate", "interest rate", "rate of interest"], "units": {"%": 1, "percent": 1, "percent per year": 1}},
+        {"key": "T", "label": "Time", "unit": "years", "alias": ["time", "period", "duration"], "units": {"years": 1, "year": 1, "yr": 1, "yrs": 1, "months": 0.0833333, "month": 0.0833333}}
+      ]
+    },
+    {
+      "id": "compound_interest",
+      "category": "commerce",
+      "name": "Compound Interest",
+      "formula": "A = P × (1 + R/100)^T",
+      "aliases": ["compound interest"],
+      "expr": "P*(1+R/100)**T",
+      "unit": "same currency as principal",
+      "explanation": "Compound interest grows faster because interest is earned on previous interest too. A is the final amount.",
+      "example": "compound interest on 5000 at 10% for 3 years",
+      "params": [
+        {"key": "P", "label": "Principal", "unit": "currency", "alias": ["principal", "investment", "deposit"], "units": {}},
+        {"key": "R", "label": "Rate", "unit": "% per year", "alias": ["rate", "interest rate", "rate of interest"], "units": {"%": 1, "percent": 1}},
+        {"key": "T", "label": "Time", "unit": "years", "alias": ["time", "period", "years"], "units": {"years": 1, "year": 1, "yr": 1, "yrs": 1}}
+      ]
+    },
+    {
+      "id": "discount",
+      "category": "commerce",
+      "name": "Discount",
+      "formula": "Discount = price × percent / 100",
+      "aliases": ["discount"],
+      "expr": "price*percent/100",
+      "unit": "same currency as price",
+      "explanation": "A discount reduces the marked price. This gives the discount amount; the final price is price minus discount.",
+      "example": "20% discount on 500",
+      "params": [
+        {"key": "price", "label": "Marked price", "unit": "currency", "alias": ["price", "marked price", "bill", "amount"], "units": {}},
+        {"key": "percent", "label": "Discount percent", "unit": "%", "alias": ["percent", "percentage"], "units": {"%": 1, "percent": 1}}
+      ]
+    },
+    {
+      "id": "gst",
+      "category": "commerce",
+      "name": "GST / Tax Amount",
+      "formula": "GST = price × rate / 100",
+      "aliases": ["gst", "sales tax", "tax"],
+      "expr": "price*rate/100",
+      "unit": "same currency as price",
+      "explanation": "GST is the tax added on top of the price. This gives the tax amount; the total you pay is price plus GST.",
+      "example": "gst on 1000 at 18%",
+      "params": [
+        {"key": "price", "label": "Base price", "unit": "currency", "alias": ["price", "bill", "amount", "invoice"], "units": {}},
+        {"key": "rate", "label": "GST rate", "unit": "%", "alias": ["rate", "percent", "percentage"], "units": {"%": 1, "percent": 1}}
+      ]
+    },
+    {
+      "id": "profit_loss",
+      "category": "commerce",
+      "name": "Profit or Loss",
+      "formula": "= selling price - cost price",
+      "aliases": ["profit", "loss"],
+      "expr": "selling-cost",
+      "unit": "same currency as price",
+      "explanation": "Profit happens when selling price is above cost price; loss when it is below.",
+      "example": "profit if cost 200 and selling 250",
+      "params": [
+        {"key": "cost", "label": "Cost price", "unit": "currency", "alias": ["cost", "cost price", "cp"], "units": {}},
+        {"key": "selling", "label": "Selling price", "unit": "currency", "alias": ["selling", "selling price", "sp"], "units": {}}
+      ]
+    },
+    {
+      "id": "bmi",
+      "category": "medical",
+      "name": "Body Mass Index (BMI)",
+      "formula": "BMI = weight(kg) / height(m)²",
+      "aliases": ["bmi", "body mass index"],
+      "expr": "weight/height**2",
+      "unit": "kg/m²",
+      "explanation": "BMI estimates body fat from weight and height. It is only a screening tool, not a diagnosis.",
+      "example": "BMI for 70 kg and 175 cm",
+      "params": [
+        {"key": "weight", "label": "Weight", "unit": "kg", "alias": ["weight", "body weight"], "units": {"kg": 1, "kilogram": 1, "kilograms": 1, "lb": 0.453592, "lbs": 0.453592, "pound": 0.453592, "pounds": 0.453592}},
+        {"key": "height", "label": "Height", "unit": "m", "alias": ["height"], "units": {"m": 1, "meter": 1, "meters": 1, "metre": 1, "metres": 1, "cm": 0.01, "centimeter": 0.01, "centimeters": 0.01, "centimetres": 0.01, "ft": 0.3048, "feet": 0.3048, "foot": 0.3048, "in": 0.0254, "inch": 0.0254, "inches": 0.0254}}
+      ]
+    }
+  ],
+  "code_templates": [
+    {
+      "id": "py_prime",
+      "title": "Check if a number is prime (Python)",
+      "language": "python",
+      "tags": ["prime", "python", "primality"],
+      "code": "# Check if a number is prime\ndef is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n ** 0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nnum = 17\nprint(f\"{num} is prime: {is_prime(num)}\")"
+    },
+    {
+      "id": "py_factorial",
+      "title": "Factorial of a number (Python)",
+      "language": "python",
+      "tags": ["factorial", "python"],
+      "code": "# Factorial of n (iterative)\ndef factorial(n):\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n\nn = 5\nprint(f\"{n}! = {factorial(n)}\")"
+    },
+    {
+      "id": "py_fibonacci",
+      "title": "Fibonacci series (Python)",
+      "language": "python",
+      "tags": ["fibonacci", "python", "sequence"],
+      "code": "def fibonacci(count):\n    a, b = 0, 1\n    result = []\n    for _ in range(count):\n        result.append(a)\n        a, b = b, a + b\n    return result\n\nprint(fibonacci(10))"
+    },
+    {
+      "id": "py_palindrome",
+      "title": "Check a palindrome (Python)",
+      "language": "python",
+      "tags": ["palindrome", "python", "reverse"],
+      "code": "def is_palindrome(text):\n    clean = ''.join(c.lower() for c in text if c.isalnum())\n    return clean == clean[::-1]\n\nprint(is_palindrome('racecar'))   # True\nprint(is_palindrome('hello'))     # False"
+    },
+    {
+      "id": "py_average",
+      "title": "Average of a list (Python)",
+      "language": "python",
+      "tags": ["average", "mean", "python", "list"],
+      "code": "nums = [5, 7, 9, 11]\naverage = sum(nums) / len(nums)\nprint(f\"Average: {average:.2f}\")"
+    },
+    {
+      "id": "py_file",
+      "title": "Read and write a file (Python)",
+      "language": "python",
+      "tags": ["file", "python", "read"],
+      "code": "# Write then read a text file\nwith open(\"notes.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Hello, world!\\n\")\n\nwith open(\"notes.txt\", \"r\", encoding=\"utf-8\") as f:\n    print(f.read())"
+    },
+    {
+      "id": "py_class",
+      "title": "Simple class with OOP (Python)",
+      "language": "python",
+      "tags": ["class", "object", "oop", "python"],
+      "code": "class Student:\n    def __init__(self, name, grade):\n        self.name = name\n        self.grade = grade\n\n    def describe(self):\n        return f\"{self.name} is in grade {self.grade}\"\n\ns = Student(\"Aisha\", 10)\nprint(s.describe())"
+    },
+    {
+      "id": "html_page",
+      "title": "Basic HTML page",
+      "language": "html",
+      "tags": ["html", "page", "web", "website"],
+      "code": "<!DOCTYPE html>\n<html>\n<head>\n  <title>My Page</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <h1>Welcome!</h1>\n  <p>This is my first web page.</p>\n  <img src=\"photo.jpg\" alt=\"A photo\">\n</body>\n</html>"
+    },
+    {
+      "id": "html_form",
+      "title": "HTML form",
+      "language": "html",
+      "tags": ["form", "html", "input", "submit"],
+      "code": "<form action=\"/submit\" method=\"post\">\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\" name=\"name\" required>\n\n  <label for=\"email\">Email:</label>\n  <input type=\"email\" id=\"email\" name=\"email\" required>\n\n  <button type=\"submit\">Submit</button>\n</form>"
+    },
+    {
+      "id": "css_center",
+      "title": "Center a div with CSS (Flexbox)",
+      "language": "css",
+      "tags": ["css", "center", "flexbox", "style"],
+      "code": ".container {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 100vh;\n}\n\n.box {\n  background: #10a37f;\n  color: white;\n  padding: 20px;\n  border-radius: 8px;\n}"
+    },
+    {
+      "id": "js_greet",
+      "title": "JavaScript greeting on click",
+      "language": "javascript",
+      "tags": ["javascript", "js", "greet", "click", "button"],
+      "code": "<button onclick=\"greet()\">Click me</button>\n\n<script>\nfunction greet() {\n  const name = prompt(\"What is your name?\");\n  alert(\"Hello, \" + name + \"!\");\n}\n</script>"
+    },
+    {
+      "id": "sql_select",
+      "title": "SQL query basics",
+      "language": "sql",
+      "tags": ["sql", "database", "query", "select"],
+      "code": "-- Find all students in grade 10, sorted by name\nSELECT name, grade\nFROM students\nWHERE grade = 10\nORDER BY name ASC;\n\n-- Count how many students there are\nSELECT COUNT(*) FROM students;"
+    },
+    {
+      "id": "py_sort",
+      "title": "Bubble sort (Python)",
+      "language": "python",
+      "tags": ["sort", "bubble", "algorithm", "python"],
+      "code": "def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        for j in range(0, n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n    return arr\n\nprint(bubble_sort([5, 2, 9, 1, 5, 6]))"
+    }
+  ]
+}

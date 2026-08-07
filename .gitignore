@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+
+# runtime artifacts (never commit these)
+chat_history.json
+gemini_oauth_token.json
